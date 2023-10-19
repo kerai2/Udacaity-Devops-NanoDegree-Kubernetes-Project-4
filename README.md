@@ -25,26 +25,48 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 ## Setup the Environment
 
-* Create a virtualenv with Python 3.7 and activate it. Refer to this link for help on specifying the Python version in the virtualenv. 
-```bash
-python3 -m pip install --user virtualenv
-# You should have Python 3.7 available in your host. 
-# Check the Python path using `which python3`
-# Use a command similar to this one:
-python3 -m virtualenv --python=<path-to-Python3.7> .devops
-source .devops/bin/activate
-```
-* Run `make install` to install the necessary dependencies
+### Create an AWS Cloud9 IDE
+1. Create a AWS Cloud9 environment with m5 image (minimum requirements 2 vcpu and 4gb ram).
+
+2. Install/verify [Docker](https://docs.docker.com/desktop/install/linux-install/)
+
+3. Install [Hadolint](https://github.com/hadolint/hadolint)
+
+4. Install/verify [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+
+5. Install [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+
+6. Create a virtualenv with Python 3.7 and activate it. Refer to this link for help on specifying the Python version in the virtualenv. 
+    ```bash
+    python3 -m pip install --user virtualenv
+    # You should have Python 3.7 available in your host. 
+    # Check the Python path using `which python3`
+    # Use a command similar to this one:
+    python3 -m virtualenv --python=<path-to-Python3.7> .devops
+    source .devops/bin/activate
+    ```
+7. Run `make install` to install the necessary dependencies
 
 ### Running `app.py`
 
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
+1. Standalone:  
+
+Run `python app.py`
+
+2. Run in Docker:  
+
+    1. Run `./run_docker.sh` to containerize the application to docker container (see script for steps).
+    2. Run `./make_prediction.sh` to test the predict API on local.
+
 3. Run in Kubernetes:  `./run_kubernetes.sh`
 
-### Kubernetes Steps
+    1. Run `./upload_docker.sh` to push the docker image into docker hub (see script for steps).
+    2. Run `minikube start` to start the local kubernetes cluster
+    3. Run `kubectl config view` to view the kubernetes default configurations and verify that the cluster is with a certificate-authority and server.
+    4. Run `./run_kubernetes.sh` to create and deploy flask app in container. Port forwarding fails due to pod still being setup. Wait 1 to 2 minutes
+    5. Run `./run_kubernetes.sh` and verify port forwarding. When the pod is in [Running] state you
+    6. Run `./make_prediction.sh` while calling `./run_kubernetes.sh`
 
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+4. Clean up local kubernetes cluster
+    1. Run `minikube stop`
+    2. Run `minikube delete` 
