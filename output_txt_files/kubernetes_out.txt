@@ -1,8 +1,20 @@
-(.devops) voclabs:~/environment/Udacity-Project-4-Kubernetes (main) $ ./run_kubernetes.sh 
+<paste log output from Kubernetes-mediated prediction, here>
+
+voclabs:~/environment $ cd Udacity-Project-4-Kubernetes/
+voclabs:~/environment/Udacity-Project-4-Kubernetes (main) $ ./make_prediction.sh 
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+voclabs:~/environment/Udacity-Project-4-Kubernetes (main) $ 
+
+
+voclabs:~/environment/Udacity-Project-4-Kubernetes (main) $ ./run_kubernetes.sh                                                                                                                                                                                                           
 Error from server (AlreadyExists): pods "udacityproject" already exists
 NAME             READY   STATUS    RESTARTS   AGE
-udacityproject   1/1     Running   0          2m43s
+udacityproject   1/1     Running   0          42s
 Forwarding from 127.0.0.1:8000 -> 80
 Forwarding from [::1]:8000 -> 80
-Handling connection for 8000
 Handling connection for 8000
