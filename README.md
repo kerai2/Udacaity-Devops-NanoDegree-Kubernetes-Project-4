@@ -51,7 +51,7 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 1. Standalone:  
 
-Run `python app.py`
+    1. Run `python app.py`
 
 2. Run in Docker:  
 
