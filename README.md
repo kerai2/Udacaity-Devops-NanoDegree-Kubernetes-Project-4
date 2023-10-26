@@ -25,7 +25,7 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 # Final Implementation
 
-##Setup the Environment
+## Setup the Environment
 
 ### Create an AWS Cloud9 IDE
 1. Create a AWS Cloud9 environment with m5 image (minimum requirements 2 vcpu and 4gb ram).
